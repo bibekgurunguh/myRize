@@ -17,8 +17,7 @@ export default function CollapsibleStep(props) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
-  const USER = props.user;
-
+  const [ USER, setUSER ] = useState(props.user);
   const [ step, setStep] = useState('initial');
   const [ anim, setAnim ] = useState(0);
   const [ descNumber, setDescNumber ] = useState(1);
@@ -38,7 +37,14 @@ export default function CollapsibleStep(props) {
 
   useEffect(() => {
     getNotes();
+    getUser();
   }, []);
+
+  async function getUser() {
+    await fetch(`${BASE_URL}/getuser/${props.user._id}`)
+      .then(res => res.json())
+      .then(data => setUSER(data));
+  }
 
   async function getNotes () {
     await fetch(`${BASE_URL}/getnotes/${props.userId}`)
@@ -78,7 +84,7 @@ export default function CollapsibleStep(props) {
     })
     .then(() => {
       setStepAdded(true);
-    });
+    })
   }
 
   function handleAddNote () {

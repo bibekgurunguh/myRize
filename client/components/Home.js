@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   StyleSheet, Animated,
   Text, View, Image,
-  ScrollView, TouchableOpacity
+  ScrollView, TouchableOpacity,
+  LayoutAnimation, UIManager,
 } from 'react-native';
 
 import Colors from '../constants/colors';
@@ -44,25 +45,38 @@ const Icons = {
 
 export default function Home(props) {
 
-  const USER = props.user;
+  if (
+    Platform.OS === "android" &&
+    UIManager.setLayoutAnimationEnabledExperimental
+  ) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+  LayoutAnimation.configureNext({
+    duration: 400,
+    // create: { type: 'linear', property: 'opacity' },
+    update: { type: 'spring', springDamping: 1.5 },
+    // delete: { type: 'linear', property: 'opacity' }
+  });
+
+  const BASE_URL = 'http://192.168.0.57:3001';
+
+  const [ USER, setUSER ] = useState(props.user);
+  const [ anim, setAnim ] = useState(600);
   const resolutions = props.resolutions;
 
-  const rollUp = new Animated.Value(400);
-  Animated.spring(
-    rollUp,
-    {toValue: 0,
-    useNativeDriver: true}
-  ).start();
-  
-  let rollAnim;
-  if (props.screenChange) {
-    rollAnim = rollUp;
-  } else {
-    rollAnim = 0;
+  useEffect(() => {
+    if (USER._id) getUser();
+    setAnim(0);
+  }, []);
+
+  async function getUser() {
+    await fetch(`${BASE_URL}/getuser/${props.user._id}`)
+      .then(res => res.json())
+      .then(data => setUSER(data));
   }
 
   return (
-    <Animated.ScrollView style={{...styles.container, transform: [{translateY: rollAnim}]}}>
+    <ScrollView style={{...styles.container, top: anim}}>
       {
         (USER.my_resolutions && USER.my_resolutions.length>0) &&
         <View style={styles.card}>
@@ -102,13 +116,10 @@ export default function Home(props) {
         </View>
       }
       
-
-
       <View style={[styles.card, {marginBottom: 25}]}>
         <Text style={styles.label}>Explore</Text>
         <View style={styles.contents}>
           {
-            
             resolutions.filter(el =>
               (USER.my_resolutions && USER.my_resolutions.length>0) ?
               !USER.my_resolutions.map(el=>el.resolution).includes(el.image_ref) : true)
@@ -134,7 +145,7 @@ export default function Home(props) {
           }
         </View>
       </View>
-    </Animated.ScrollView>
+    </ScrollView>
   )
 }
 

@@ -77,7 +77,7 @@ export default function Resolution(props) {
 
   const BASE_URL = 'http://192.168.0.57:3001';
 
-  const USER = props.user;
+  const [ USER, setUSER ] = useState(props.user);
   const resolutions = props.resolutions;
   const [ added, setAdded ] = useState(false);
 
