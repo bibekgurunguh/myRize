@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet, Animated,
   Text, View, Image,
@@ -69,8 +69,8 @@ export default function Home(props) {
           <Text style={styles.label}>My Resolutions</Text>
           <View style={styles.contents}>
             {
-              resolutions.filter(el => USER.my_resolutions.includes(el.image_ref)).map((el, index) => {
-                const progressCalculated = Math.ceil(el.steps.filter(a => !a.locked).length*100/el.steps.length);
+              resolutions.filter(el => USER.my_resolutions.map(el => el.resolution).includes(el.image_ref)).map((el, index) => {
+                let progressCalculated = Math.ceil(USER.my_resolutions.filter(item=>item.resolution===el.image_ref)[0].completedSteps.length*100/el.steps.length);
                 return (
                   <TouchableOpacity
                     key={index}
@@ -111,7 +111,7 @@ export default function Home(props) {
             
             resolutions.filter(el =>
               (USER.my_resolutions && USER.my_resolutions.length>0) ?
-              !USER.my_resolutions.includes(el.image_ref) : true)
+              !USER.my_resolutions.map(el=>el.resolution).includes(el.image_ref) : true)
               .map((el, index) => {
               return (
                 <TouchableOpacity

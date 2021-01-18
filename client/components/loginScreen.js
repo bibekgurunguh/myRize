@@ -45,6 +45,7 @@ export default function loginScreen(props) {
           setInitialLoad(true);
           props.logIn();
           props.setUser(user);
+          props.setUserId(user._id);
           props.getAllRes();
         }
       })

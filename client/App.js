@@ -18,11 +18,13 @@ export default function App() {
   const [ screen, setScreen ] = useState('home');
   const [ screenChange, setScreenChange ] = useState(false);
   const [ logged, setLogged ] = useState(false);
+  const [ userId, setUserId ] = useState();
   const [ user, setUser ] = useState({});
   const [ resolutions, setResolutions ] = useState([]);
 
   useEffect(() => {
     getAllRes();
+    if (user._id) getUser();
   }, []);
 
   function getAllRes () {
@@ -30,6 +32,14 @@ export default function App() {
       .then(res => res.json())
       .then(data => {
         setResolutions(data);
+      });
+  }
+
+  async function getUser() {
+    await fetch(`${BASE_URL}/getuser/${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        setUser(data);
       });
   }
 
@@ -46,6 +56,7 @@ export default function App() {
           <LoginScreen 
             logIn={()=>setLogged(true)}
             setUser={setUser}
+            setUserId={setUserId}
             getAllRes={getAllRes}
           />
         </View>

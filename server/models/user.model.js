@@ -7,7 +7,12 @@ const UserSchema = new Schema ({
   first: {type: String, required: true},
   last: {type: String, required: true},
   settings: Object,
-  my_resolutions: [String],
+  my_resolutions: [
+    {
+      resolution: {type: String, required: true},
+      completedSteps: [Number]
+    }
+  ],
   notes: [
     {
       resolution: {type: String, required: true},

@@ -14,7 +14,8 @@ router.post('/logout', authMiddleware, userCtrl.logout);
 router.get('/profile', authMiddleware, userCtrl.getProfileInfo);
 router.get('/allusers', userCtrl.getAllUsers);
 router.get('/getuser/:id', userCtrl.getUser);
-router.put('/addRes/:userId/:ref', userCtrl.addRes);
+router.put('/addres', userCtrl.addRes);
+router.put('/completestep', userCtrl.completeStep);
 router.put('/addnote', userCtrl.addNote);
 router.get('/getnotes/:userId', userCtrl.getNotes);
 

@@ -8,8 +8,6 @@ import CollapsibleStep from './CollapsibleStep';
 import Colors from '../constants/colors';
 let Theme = Colors.default;
 
-// const resolutions = require('../resolutions.json').resolutions;
-
 const Icons = {
   running: require('../assets/icons/runningIcon.png'),
   reading: require('../assets/icons/readingIcon.png'),
@@ -84,10 +82,18 @@ export default function Resolution(props) {
   const [ added, setAdded ] = useState(false);
 
   function addRes () {
-    return fetch(`${BASE_URL}/addRes/${USER._id}/${props.chosenRes}`,
-    { method: 'PUT' })
+    const newRes = {
+      resolution: props.chosenRes,
+      completedSteps: []
+    }
+    return fetch(`${BASE_URL}/addres`,
+    { method: 'PUT',
+      credentials: 'include',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({...newRes, userId: USER._id}) })
     .then(() => {
-      USER.my_resolutions.push(props.chosenRes);
+      USER.my_resolutions.push(newRes);
       setAdded(true);
     });
   }
@@ -118,7 +124,7 @@ export default function Resolution(props) {
                 <Text style={styles.title}>{el.title}</Text>
                 <Text style={styles.overview}>{el.overview}</Text>
                 {
-                  USER.my_resolutions.includes(el.image_ref) &&
+                  USER.my_resolutions.map(el=>el.resolution).includes(el.image_ref) &&
                   el.steps.map(step => {
                     return (
                       <CollapsibleStep
@@ -131,13 +137,14 @@ export default function Resolution(props) {
                         my_resolutions={USER.my_resolutions}
                         screenChange={props.screenChange}
                         chosenRes={props.chosenRes}
+                        user={props.user}
                       />
                     )
                   })
                 }
               </View>
               {
-                (!USER.my_resolutions.includes(el.image_ref) && !added) &&
+                (!USER.my_resolutions.map(el=>el.resolution).includes(el.image_ref) && !added) &&
                 <TouchableOpacity style={styles.startBtn} onPress={addRes}>
                   <Text style={styles.startBtnText}>+</Text>
                 </TouchableOpacity>

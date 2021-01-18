@@ -17,6 +17,8 @@ export default function CollapsibleStep(props) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
+  const USER = props.user;
+
   const [ step, setStep] = useState('initial');
   const [ anim, setAnim ] = useState(0);
   const [ descNumber, setDescNumber ] = useState(1);
@@ -24,7 +26,14 @@ export default function CollapsibleStep(props) {
   const [ noteEntry, setNoteEntry ] = useState('');
   const [ noteNav, setNoteNav ] = useState(false);
   const [ notes, setNotes ] = useState(props.notes);
+  const [ stepAdded, setStepAdded ] = useState(false);
 
+  let initiallyAdded;
+  
+  if (USER.my_resolutions.filter(el=>el.resolution===props.chosenRes)[0]
+    .completedSteps.includes(props.stepId)) initiallyAdded = true;
+  else initiallyAdded = false;
+  
   const BASE_URL = 'http://192.168.0.57:3001';
 
   useEffect(() => {
@@ -53,6 +62,22 @@ export default function CollapsibleStep(props) {
       body: JSON.stringify({...newNote, userId: props.userId})})
     .then(() => {
       getNotes();
+    });
+  }
+
+  function completeStep () {
+    return fetch(`${BASE_URL}/completestep`,
+    { method: 'PUT',
+      credentials: 'include',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        stepId: props.stepId,
+        resolution: props.chosenRes,
+        userId: props.userId})
+    })
+    .then(() => {
+      setStepAdded(true);
     });
   }
 
@@ -186,6 +211,17 @@ export default function CollapsibleStep(props) {
           )
         }
       </View>
+      {/* Mark as completed */}
+      {
+        step === 'expanded' && !stepAdded && !initiallyAdded &&
+        <View style={styles.markCompleted}>
+          <Button
+            title='Mark as completed'
+            color={Theme.accent}
+            onPress={completeStep}
+          />
+        </View>
+      }
     </View>
   )
 }
@@ -301,5 +337,11 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     marginTop: 5,
     marginLeft: 5,
+  },
+  markCompleted: {
+    alignSelf: 'center',
+    padding: 10,
+    paddingLeft: 30,
+    // width: 300,
   }
 })

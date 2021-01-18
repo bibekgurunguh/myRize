@@ -75,10 +75,26 @@ exports.getUser = async (req, res) => {
 
 exports.addRes = async (req, res) => {
   try {
-    const updatedUser = await User.updateOne({ _id: req.params.userId}, {$push : {my_resolutions: req.params.ref}});
+    const updatedUser = await User.updateOne({_id: req.body.userId}, {$push : {my_resolutions:
+      {
+        resolution: req.body.resolution,
+        completedSteps: []
+      }
+    }});
     res.send(updatedUser);
   } catch (err) {
     console.log('ADD RES: ', err) ;
+    res.sendStatus(500);
+  }
+};
+
+exports.completeStep = async (req, res) => {
+  try {
+    const updatedUser = await User.updateOne({_id: req.body.userId, my_resolutions: {'$elemMatch': {resolution: req.body.resolution}}},
+    {$push : {'my_resolutions.$.completedSteps': req.body.stepId}});
+    res.send(updatedUser);
+  } catch (err) {
+    console.log('COMPLETE STEP: ', err) ;
     res.sendStatus(500);
   }
 };
@@ -109,22 +125,3 @@ exports.getNotes = async (req, res) => {
     res.sendStatus(500);
   }
 };
-
-const mockUser = {
-  email: 'user1@test.com',
-  password: 'pass123',
-  first: 'John',
-  last: 'Smith',
-  settings: {},
-  my_resolutions: ['running', 'swimming'],
-  notes: [
-    {
-      id: 1,
-      resolution: 'running',
-      stepId: 4,
-      image: '',
-      note: 'This is a test comment.',
-      date: '2021-01-02T16:54:20.593Z'
-    }
-  ]
-}
