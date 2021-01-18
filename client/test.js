@@ -1,0 +1,13 @@
+// const newDate = new Date(Date.now());
+// console.log(newDate);
+
+// let ResolutionsJSON = require('./resolutions.json');
+// // console.log(ResolutionsJSON);
+// // console.log(JSON.parse(ResolutionsJSON));
+// ResolutionsJSON.map(el => {
+//   console.log(el.title);
+// })
+
+
+
+console.log(new Date(Date.now()));
