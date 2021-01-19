@@ -47,6 +47,7 @@ export default function loginScreen(props) {
           props.setUser(user);
           props.setUserId(user._id);
           props.getAllRes();
+          props.setScreen('home');
         }
       })
     return result;
@@ -121,6 +122,9 @@ export default function loginScreen(props) {
         source={require('../assets/JSON/logoAnimation.json')}
         autoPlay loop
       ></LottieView>
+      <Text style={styles.appTitle}>
+        MY<Text style={styles.appTitle2}>R</Text>IZE
+      </Text>
       
       {
         form === 'login' ?
@@ -178,6 +182,20 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 300,
+    alignSelf: 'center',
+  },
+  appTitle: {
+    position: 'absolute',
+    top: 250,
+    alignSelf: 'center',
+    color: Theme.dark,
+    fontSize: 30,
+    fontWeight: 'normal',
+  },
+  appTitle2: {
+    fontSize: 40,
+    // fontWeight: 'bold',
+    color: Theme.dark,
   },
   TextInput: {
     color: Theme.dark,

@@ -15,7 +15,7 @@ export default function App() {
   const BASE_URL = 'http://192.168.0.57:3001';
 
   const [ quickSettings, setQuickSettings ] = useState(false);
-  const [ screen, setScreen ] = useState('home');
+  const [ screen, setScreen ] = useState('');
   const [ screenChange, setScreenChange ] = useState(false);
   const [ logged, setLogged ] = useState(false);
   const [ userId, setUserId ] = useState();
@@ -58,6 +58,7 @@ export default function App() {
             setUser={setUser}
             setUserId={setUserId}
             getAllRes={getAllRes}
+            setScreen={setScreen}
           />
         </View>
       :
