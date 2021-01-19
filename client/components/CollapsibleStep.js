@@ -32,6 +32,12 @@ export default function CollapsibleStep(props) {
   if (USER.my_resolutions.filter(el=>el.resolution===props.chosenRes)[0]
     .completedSteps.includes(props.stepId)) initiallyAdded = true;
   else initiallyAdded = false;
+
+  let initialNextStep;
+  
+  if (props.stepId <= USER.my_resolutions.filter(el=>el.resolution===props.chosenRes)[0]
+  .completedSteps.length + 1) initialNextStep = true;
+  else initialNextStep = false;
   
   const BASE_URL = 'http://192.168.0.57:3001';
 
@@ -84,6 +90,7 @@ export default function CollapsibleStep(props) {
     })
     .then(() => {
       setStepAdded(true);
+      props.setNextStep(props.nextStep+1);
     })
   }
 
@@ -97,16 +104,18 @@ export default function CollapsibleStep(props) {
   }
 
   function toggleStep () {
-    if (step === 'initial' || step === 'collapsed') {
-      setStep('expanded');
-      setAnim('auto');
-      setElev(5);
-    }
-    else {
-      setStep('collapsed');
-      setAnim(0);
-      setElev(0);
-      setNoteNav(false);
+    if (props.stepId <= props.nextStep || initialNextStep) {
+      if (step === 'initial' || step === 'collapsed') {
+        setStep('expanded');
+        setAnim('auto');
+        setElev(5);
+      }
+      else {
+        setStep('collapsed');
+        setAnim(0);
+        setElev(0);
+        setNoteNav(false);
+      }
     }
   }
 
@@ -119,10 +128,9 @@ export default function CollapsibleStep(props) {
 
   return (
     <View style={styles.container}>
-
       {/* Title */}
-      <View style={styles.title}>
-        <View style={styles.numberView}>
+      <View style={[styles.title, {opacity: (props.stepId<=props.nextStep || initialNextStep) ? 1 : 0.6}]}>
+        <View style={[styles.numberView, {backgroundColor: (initiallyAdded || stepAdded) ? 'lime' : Theme.primary}]}>
           <Text style={styles.number}>{props.stepId}</Text>
         </View>
         <TouchableOpacity onPress={toggleStep} activeOpacity={0.7}>
@@ -245,7 +253,6 @@ const styles = StyleSheet.create({
   numberView: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'lime',
     width: 40,
     height: 40,
     borderRadius: 20,

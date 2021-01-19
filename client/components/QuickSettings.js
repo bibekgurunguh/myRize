@@ -56,7 +56,7 @@ export default function QuickSettings(props) {
       <TouchableOpacity
         style={styles.buttons}
         activeOpacity={0.6}
-        onPress={()=>{props.toggleQuickSettings(); props.logOut();}}
+        onPress={()=>{props.toggleQuickSettings(); props.logOut(); props.setScreen('')}}
       >
         <Text style={styles.buttonText}>🏁 Log out</Text>
       </TouchableOpacity>

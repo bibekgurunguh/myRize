@@ -81,6 +81,31 @@ export default function Resolution(props) {
   const resolutions = props.resolutions;
   const [ added, setAdded ] = useState(false);
 
+  const [ nextStep, setNextStep ] = useState(
+    USER.my_resolutions && added ?
+    USER.my_resolutions.filter(el=>el.resolution===props.chosenRes)[0]
+    .completedSteps.length + 1
+    : 1
+  );
+  
+  useEffect(() => {
+    getUser();
+    // (async () => {
+    //   await setNextStep(USER.my_resolutions.filter(el=>el.resolution===props.chosenRes)[0]
+    //   .completedSteps.length + 1);
+    // })();
+  }, []);
+
+  async function getUser() {
+    await fetch(`${BASE_URL}/getuser/${props.user._id}`)
+      .then(res => res.json())
+      .then(data => {
+        setUSER(data)
+        setNextStep(data.my_resolutions.filter(el=>el.resolution===props.chosenRes)[0]
+        .completedSteps.length + 1)
+      }).catch(err=>{})
+  }
+
   function addRes () {
     const newRes = {
       resolution: props.chosenRes,
@@ -94,6 +119,7 @@ export default function Resolution(props) {
       body: JSON.stringify({...newRes, userId: USER._id}) })
     .then(() => {
       USER.my_resolutions.push(newRes);
+      getUser();
       setAdded(true);
     });
   }
@@ -137,7 +163,9 @@ export default function Resolution(props) {
                         my_resolutions={USER.my_resolutions}
                         screenChange={props.screenChange}
                         chosenRes={props.chosenRes}
-                        user={props.user}
+                        user={USER}
+                        nextStep={nextStep}
+                        setNextStep={setNextStep}
                       />
                     )
                   })

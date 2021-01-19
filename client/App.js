@@ -128,6 +128,7 @@ export default function App() {
                     }
                   }}
                   screenChange={()=>setScreenChange(true)}
+                  setScreen={setScreen}
                   logOut={()=>{setLogged(false); setScreen('home')}}
                 />
               </View>
