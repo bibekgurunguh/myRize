@@ -10,7 +10,6 @@ npm-debug.*
 web-build/
 
 config.js
-test.js
 
 # macOS
 .DS_Store
