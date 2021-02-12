@@ -151,7 +151,6 @@ const styles = StyleSheet.create({
   },
   LoginScreen: {
     flex: 1,
-    // justifyContent: 'center',
     alignItems: "center",
     backgroundColor: Theme.primary,
   },
@@ -165,13 +164,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 110,
     right: 10,
-    // zIndex: 1,
     elevation: 16,
   },
   dashboard: {
     flex: 1,
     width: "100%",
-    // height: '78%',
   },
   bottombar: {
     position: "absolute",

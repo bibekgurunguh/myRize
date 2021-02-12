@@ -15,38 +15,6 @@ import { IP_ADDRESS, PORT } from "../config";
 const BASE_URL = `http://${IP_ADDRESS}:${PORT}`;
 let Theme = Colors.default;
 
-const Icons = {
-  running: require("../assets/icons/runningIcon.png"),
-  reading: require("../assets/icons/readingIcon.png"),
-  quitSmoking: require("../assets/icons/quitSmokingIcon.png"),
-  swimming: require("../assets/icons/swimmingIcon.png"),
-  quitDrinkingAlcohol: require("../assets/icons/quitDrinkingAlcoholIcon.png"),
-  overcomeFearOfPublicSpeaking: require("../assets/icons/overcomeFearOfPublicSpeakingIcon.png"),
-  startHealthyDiet: require("../assets/icons/startHealthyDietIcon.png"),
-  improveCreativeThinking: require("../assets/icons/improveCreativeThinkingIcon.png"),
-  sleepBetter: require("../assets/icons/sleepBetterIcon.png"),
-  overcomeAddiction: require("../assets/icons/overcomeAddictionIcon.png"),
-  improveSocialSkills: require("../assets/icons/improveSocialSkillsIcon.png"),
-  improveQuickLearning: require("../assets/icons/improveQuickLearningIcon.png"),
-  becomeVegan: require("../assets/icons/becomeVeganIcon.png"),
-  saveMoney: require("../assets/icons/saveMoneyIcon.png"),
-  organizeYourLife: require("../assets/icons/organizeYourLifeIcon.png"),
-  gainFlexibility: require("../assets/icons/gainFlexibilityIcon.png"),
-  liveGoodFamilyLife: require("../assets/icons/liveGoodFamilyLifeIcon.png"),
-  reviseEfficiently: require("../assets/icons/reviseEfficientlyIcon.png"),
-  improveSkinHealth: require("../assets/icons/improveSkinHealthIcon.png"),
-  singing: require("../assets/icons/singingIcon.png"),
-  stayLookingCleanAllDay: require("../assets/icons/stayLookingCleanAllDayIcon.png"),
-  bePhysicallyFit: require("../assets/icons/bePhysicallyFitIcon.png"),
-  dancing: require("../assets/icons/dancingIcon.png"),
-  conquerYourFear: require("../assets/icons/conquerYourFearIcon.png"),
-  giveBackToCommunity: require("../assets/icons/giveBackToCommunityIcon.png"),
-  rememberImportantThings: require("../assets/icons/rememberImportantThingsIcon.png"),
-  stopProcrastinating: require("../assets/icons/stopProcrastinatingIcon.png"),
-  tryNewLook: require("../assets/icons/tryNewLookIcon.png"),
-  beMentallyAndEmotionallyStrong: require("../assets/icons/beMentallyAndEmotionallyStrongIcon.png"),
-  practiceYogaDaily: require("../assets/icons/practiceYogaDailyIcon.png"),
-};
 const Backdrops = {
   running: require("../assets/backdrops/runningBackdrop.jpg"),
   reading: require("../assets/backdrops/readingBackdrop.jpg"),
@@ -94,10 +62,6 @@ export default function Resolution(props) {
 
   useEffect(() => {
     getUser();
-    // (async () => {
-    //   await setNextStep(USER.my_resolutions.filter(el=>el.resolution===props.chosenRes)[0]
-    //   .completedSteps.length + 1);
-    // })();
   }, []);
 
   async function getUser() {

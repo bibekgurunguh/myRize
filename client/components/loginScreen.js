@@ -7,10 +7,8 @@ import {
   Button,
   TouchableOpacity,
   Animated,
-  ScrollView,
 } from "react-native";
 import LottieView from "lottie-react-native";
-import Spinner from "./Spinner";
 
 import Colors from "../constants/colors";
 import { IP_ADDRESS, PORT } from "../config";
@@ -266,7 +264,6 @@ const styles = StyleSheet.create({
   },
   appTitle2: {
     fontSize: 40,
-    // fontWeight: 'bold',
     color: Theme.dark,
   },
   TextInput: {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
-  Animated,
   Text,
   View,
   Image,
@@ -155,7 +154,6 @@ export default function Home(props) {
                     style={styles.icon}
                     source={Icons[el.image_ref]}
                     tintColor={Colors.default.accent}
-                    // tintColor={el.color}
                   />
                 </TouchableOpacity>
               );

@@ -1,43 +1,51 @@
-import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View, Animated, TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
 
-import Colors from '../constants/colors';
+import Colors from "../constants/colors";
 const Theme = Colors.default;
 
 export default function Settings(props) {
-
-  const [ changeTheme, setChangeTheme ] = useState(false);
-  const [ notifications, setNotifications ] = useState(true);
+  const [changeTheme, setChangeTheme] = useState(false);
+  const [notifications, setNotifications] = useState(true);
 
   const rollUp = new Animated.Value(400);
-  Animated.spring(
-    rollUp,
-    {toValue: 0,
-    useNativeDriver: true}
-  ).start();
+  Animated.spring(rollUp, { toValue: 0, useNativeDriver: true }).start();
 
-  const [ rollAnim, setRollAnim ] = useState(rollUp);
+  const [rollAnim, setRollAnim] = useState(rollUp);
 
-  function toggleChangeTheme () {
+  function toggleChangeTheme() {
     setChangeTheme(!changeTheme);
   }
 
-  function toggleNotifications () {
+  function toggleNotifications() {
     setNotifications(!notifications);
   }
 
   return (
-    <Animated.ScrollView style={{...styles.container, transform: [{translateY: rollAnim}]}}>
+    <Animated.ScrollView
+      style={{ ...styles.container, transform: [{ translateY: rollAnim }] }}
+    >
       <Text style={styles.label}>Settings</Text>
 
       <View style={styles.line}></View>
 
       <View style={styles.card}>
-        <TouchableOpacity onPress={toggleNotifications} style={styles.toggleOption}>
+        <TouchableOpacity
+          onPress={toggleNotifications}
+          style={styles.toggleOption}
+        >
           <Text style={styles.label}>Notifications</Text>
           <View
             style={
-              notifications ? styles.notificationsActive : styles.notificationsInactive
+              notifications
+                ? styles.notificationsActive
+                : styles.notificationsInactive
             }
           ></View>
         </TouchableOpacity>
@@ -46,17 +54,17 @@ export default function Settings(props) {
       <View style={styles.card}>
         <TouchableOpacity onPress={toggleChangeTheme}>
           <Text style={styles.label}>Change theme</Text>
-          {
-            changeTheme ?
-              <View>
-                <Text>Hi</Text>
-              </View>
-            : <></>
-          }
+          {changeTheme ? (
+            <View>
+              <Text>Hi</Text>
+            </View>
+          ) : (
+            <></>
+          )}
         </TouchableOpacity>
       </View>
     </Animated.ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -65,7 +73,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: Theme.accent,
   },
   line: {
@@ -80,27 +88,27 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   toggleOption: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   notificationsActive: {
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: 'lightgreen',
+    backgroundColor: "lightgreen",
     borderWidth: 2,
-    borderColor: 'green'
+    borderColor: "green",
   },
   notificationsInactive: {
     height: 20,
     width: 20,
     borderRadius: 10,
-    backgroundColor: 'lightgrey',
+    backgroundColor: "lightgrey",
     borderWidth: 2,
-    borderLeftColor: 'grey',
-    borderTopColor: 'grey',
-    borderRightColor: 'black',
-    borderBottomColor: 'black',
-  }
-})
+    borderLeftColor: "grey",
+    borderTopColor: "grey",
+    borderRightColor: "black",
+    borderBottomColor: "black",
+  },
+});
