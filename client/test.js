@@ -8,6 +8,5 @@
 //   console.log(el.title);
 // })
 
-
-
-console.log(new Date(Date.now()));
+const obj = {a: 1, b:25};
+console.log(obj.length);
