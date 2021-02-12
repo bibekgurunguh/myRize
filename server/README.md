@@ -18,12 +18,12 @@ Run the server.
 
 
 
-Main Readme:
+### Main Readme:
 
 https://github.com/bibekgurunguh/myRize/blob/master/README.md
 
 
 
-Client Readme:
+### Client Readme:
 
 https://github.com/bibekgurunguh/myRize/blob/master/client/README.md
