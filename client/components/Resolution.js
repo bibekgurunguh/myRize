@@ -11,42 +11,10 @@ import {
 import CollapsibleStep from "./CollapsibleStep";
 import Colors from "../constants/colors";
 import { IP_ADDRESS, PORT } from "../config";
+import { Backdrops } from "../constants/images";
 
 const BASE_URL = `http://${IP_ADDRESS}:${PORT}`;
 let Theme = Colors.default;
-
-const Backdrops = {
-  running: require("../assets/backdrops/runningBackdrop.jpg"),
-  reading: require("../assets/backdrops/readingBackdrop.jpg"),
-  quitSmoking: require("../assets/backdrops/quitSmokingBackdrop.jpg"),
-  swimming: require("../assets/backdrops/swimmingBackdrop.jpg"),
-  quitDrinkingAlcohol: require("../assets/backdrops/quitDrinkingAlcoholBackdrop.jpg"),
-  overcomeFearOfPublicSpeaking: require("../assets/backdrops/overcomeFearOfPublicSpeakingBackdrop.jpg"),
-  startHealthyDiet: require("../assets/backdrops/startHealthyDietBackdrop.jpg"),
-  improveCreativeThinking: require("../assets/backdrops/improveCreativeThinkingBackdrop.jpg"),
-  sleepBetter: require("../assets/backdrops/sleepBetterBackdrop.jpg"),
-  overcomeAddiction: require("../assets/backdrops/overcomeAddictionBackdrop.jpg"),
-  improveSocialSkills: require("../assets/backdrops/improveSocialSkillsBackdrop.jpg"),
-  improveQuickLearning: require("../assets/backdrops/improveQuickLearningBackdrop.jpg"),
-  becomeVegan: require("../assets/backdrops/becomeVeganBackdrop.jpg"),
-  saveMoney: require("../assets/backdrops/saveMoneyBackdrop.jpg"),
-  organizeYourLife: require("../assets/backdrops/organizeYourLifeBackdrop.jpg"),
-  gainFlexibility: require("../assets/backdrops/gainFlexibilityBackdrop.jpg"),
-  liveGoodFamilyLife: require("../assets/backdrops/liveGoodFamilyLifeBackdrop.jpg"),
-  reviseEfficiently: require("../assets/backdrops/reviseEfficientlyBackdrop.jpg"),
-  improveSkinHealth: require("../assets/backdrops/improveSkinHealthBackdrop.jpg"),
-  singing: require("../assets/backdrops/singingBackdrop.jpg"),
-  stayLookingCleanAllDay: require("../assets/backdrops/stayLookingCleanAllDayBackdrop.jpg"),
-  bePhysicallyFit: require("../assets/backdrops/bePhysicallyFitBackdrop.jpg"),
-  dancing: require("../assets/backdrops/dancingBackdrop.jpg"),
-  conquerYourFear: require("../assets/backdrops/conquerYourFearBackdrop.jpg"),
-  giveBackToCommunity: require("../assets/backdrops/giveBackToCommunityBackdrop.jpg"),
-  rememberImportantThings: require("../assets/backdrops/rememberImportantThingsBackdrop.jpg"),
-  stopProcrastinating: require("../assets/backdrops/stopProcrastinatingBackdrop.jpg"),
-  tryNewLook: require("../assets/backdrops/tryNewLookBackdrop.jpg"),
-  beMentallyAndEmotionallyStrong: require("../assets/backdrops/beMentallyAndEmotionallyStrongBackdrop.jpg"),
-  practiceYogaDaily: require("../assets/backdrops/practiceYogaDailyBackdrop.jpg"),
-};
 
 export default function Resolution(props) {
   const [USER, setUSER] = useState(props.user);
