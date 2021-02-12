@@ -21,3 +21,9 @@ Run the server.
 Main Readme:
 
 https://github.com/bibekgurunguh/myRize/blob/master/README.md
+
+
+
+Client Readme:
+
+https://github.com/bibekgurunguh/myRize/blob/master/client/README.md

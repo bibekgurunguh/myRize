@@ -12,3 +12,12 @@ MyRize is an app that helps you discover ways to make positive changes in your l
 
 
 
+## Client
+
+https://github.com/bibekgurunguh/myRize/blob/master/client/README.md
+
+
+
+## Server
+
+https://github.com/bibekgurunguh/myRize/blob/master/server/README.md

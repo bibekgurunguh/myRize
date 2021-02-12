@@ -21,3 +21,9 @@ Start the App.
 Main Readme:
 
 https://github.com/bibekgurunguh/myRize/blob/master/README.md
+
+
+
+Server Readme:
+
+https://github.com/bibekgurunguh/myRize/blob/master/server/README.md
