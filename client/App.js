@@ -9,7 +9,7 @@ import Bottombar from "./components/Bottombar";
 import QuickSettings from "./components/QuickSettings";
 import Dashboard from "./components/Dashboard";
 import LoginScreen from "./components/loginScreen";
-import { IP_ADDRESS, PORT } from "../config";
+import { IP_ADDRESS, PORT } from "./config";
 
 const BASE_URL = `http://${IP_ADDRESS}:${PORT}`;
 
