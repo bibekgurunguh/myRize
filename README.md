@@ -39,5 +39,14 @@ There is a config template called `config_example.js`. Create a `config.js` file
 - Navigate to the server folder. `cd server`
 - Run the server. `nodemon`
 
+## Observations
+### Room for improvements
+- Refactor into TypeScript
+- Write tests
+### Next orders
+- Feature to attach images on notes
+- Push notifications feature
+- More customizable on profile settings
+
 ## Contributors
 Bibek Gurung <a href="https://github.com/bibekgurunguh">Github</a>
