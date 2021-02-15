@@ -9,6 +9,7 @@ MyRize is an app that helps you discover ways to make positive changes in your l
 ![myRize_dropback](https://github.com/bibekgurunguh/myRize/blob/master/myRize_dropback.jpg)
 
 ## Demo
+<img align="right" src="./client/assets/logoAnimation.gif" alt="MyRize logo" style="zoom:30%" width="350" height="350" >
 
 [![MyRize](http://img.youtube.com/vi/RGjZ9w5Mg8I/0.jpg)](http://www.youtube.com/watch?v=RGjZ9w5Mg8I "MyRize")
 
@@ -19,12 +20,12 @@ Install both server and client at once.
 
 OR
 
-Install server and client separately. Follow the following links for instructions:
+Install server and client separately. Follow the links below for instructions:
 
-### Client
+Client:
 https://github.com/bibekgurunguh/myRize/blob/master/client/README.md
 
-### Server
+Server:
 https://github.com/bibekgurunguh/myRize/blob/master/server/README.md
 
 ## Configuration
