@@ -22,11 +22,9 @@ OR
 
 Install dependencies on server and client separately. Follow the links below for instructions:
 
-Client:
-https://github.com/bibekgurunguh/myRize/blob/master/client/README.md
+<a href="https://github.com/bibekgurunguh/myRize/blob/master/client/README.md">Client</a>
 
-Server:
-https://github.com/bibekgurunguh/myRize/blob/master/server/README.md
+<a href="https://github.com/bibekgurunguh/myRize/blob/master/server/README.md">Server</a>
 
 ## Configuration
 There is a config template called `config_example.js`. Create a `config.js` file following the template and enter your relevant data on the fields.
