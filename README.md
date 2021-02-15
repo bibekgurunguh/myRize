@@ -15,12 +15,12 @@ MyRize is an app that helps you discover ways to make positive changes in your l
 
 ## Installation
 
-Install both server and client at once.
+Install dependencies on both server and client at once.
 `npm run install-all`
 
 OR
 
-Install server and client separately. Follow the links below for instructions:
+Install dependencies on server and client separately. Follow the links below for instructions:
 
 Client:
 https://github.com/bibekgurunguh/myRize/blob/master/client/README.md
