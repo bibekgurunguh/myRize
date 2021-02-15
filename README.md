@@ -40,4 +40,4 @@ There is a config template called `config_example.js`. Create a `config.js` file
 - Run the server. `nodemon`
 
 ## Contributors
-Bibek Gurung https://github.com/bibekgurunguh
+Bibek Gurung <a href="https://github.com/bibekgurunguh">Github</a>
