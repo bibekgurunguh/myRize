@@ -9,9 +9,9 @@ MyRize is an app that helps you discover ways to make positive changes in your l
 ![myRize_dropback](https://github.com/bibekgurunguh/myRize/blob/master/myRize_dropback.jpg)
 
 ## Demo
-<img align="right" src="./client/assets/logoAnimation.gif" alt="MyRize logo" style="zoom:30%" width="350" height="350" >
 
 [![MyRize](http://img.youtube.com/vi/RGjZ9w5Mg8I/0.jpg)](http://www.youtube.com/watch?v=RGjZ9w5Mg8I "MyRize")
+<img align="right" src="./client/assets/logoAnimation.gif" alt="MyRize logo" style="zoom:30%" width="350" height="350" >
 
 ## Installation
 
